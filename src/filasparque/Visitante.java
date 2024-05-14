@@ -13,12 +13,16 @@ public class Visitante {
     private String nombre;
     private String apellido;
     private int identificador;
+    private int ticket;
 
-    public Visitante(String nombre, String apellido, int identificador) {
+    public Visitante(String nombre, String apellido, int identificador, int ticket) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.identificador = identificador;
+        this.ticket = 0;
     }
+
+ 
 
     public String getNombre() {
         return nombre;
