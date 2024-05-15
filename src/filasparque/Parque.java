@@ -6,6 +6,7 @@ package filasparque;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 /**
  *
@@ -15,7 +16,7 @@ public class Parque {
 
     Queue<Visitante> parque = new LinkedList<>();
     private int CapFila;
-     private int cont = 0;
+    private int cont = 0;
 
     public Parque(int capacidadParque, int cantidadFila) {
         this.CapFila = 100;
@@ -49,13 +50,24 @@ public class Parque {
         // ingresa persona 
         //contandor 
         if (CapParque() == true) {
-            String nombre = "Juan";
-            String apellido = "Perez";
-            Visitante visitante = new Visitante(nombre, apellido, cont,0);
+            Scanner leer = new Scanner(System.in);
+            System.out.println("Ingrese su nombre :");
+            String nombre = leer.nextLine();
+            System.out.println("Ingrese su apellido :");
+            String apellido = leer.nextLine();
+            System.out.println("Ingrese su Documento :");
+            leer.nextInt();
+            int identificador = leer.nextInt();
+            while (buscarVisitante(identificador) == true) {
+                System.out.println("Ya existe un visitante con ese identificador, ingrese otro");
+                identificador = leer.nextInt();
+            }
+            Visitante visitante = new Visitante(nombre, apellido, identificador, 0);
             parque.add(visitante);
-            System.out.println("Ingreso al parque y su identificador es :" + nombre + cont);
+            System.out.println("Ingreso al parque y su identificador es :" + identificador + "disfrute el parque "+nombre);
+            cont++;
         } else {
-            System.out.println("Esta lleno el parque");
+            System.out.println("El parque esta a su limite, intente mas tarde");
         }
 
     }
@@ -71,6 +83,7 @@ public class Parque {
             } else {
                 aux.add(visitante);
                 parque.poll();
+                cont--;
             }
         }
         for (Visitante visitante : aux) {
@@ -79,16 +92,17 @@ public class Parque {
 
     }
 
-    public void buscarVisitante(int identificador) {
+    public boolean buscarVisitante(int identificador) {
         //busca por identificador el visitante que  se consulta
         Queue<Visitante> aux = new LinkedList<>();
-        int contador = 1;
+        int contador = 0;
         for (Visitante visitante : parque) {
             if (visitante.getIdentificador() == identificador) {
-                System.out.println("El visitante: " + parque.peek() + " esta en la posicion: " + contador);
-                 aux.add(visitante);
-                parque.poll();
                 contador++;
+                System.out.println("El visitante: " + parque.peek() + " esta en la posicion: " + contador);
+                aux.add(visitante);
+                parque.poll();
+
             } else {
                 aux.add(visitante);
                 parque.poll();
@@ -96,6 +110,12 @@ public class Parque {
         }
         for (Visitante visitante : aux) {
             parque.add(visitante);
+        }
+
+        if (contador == 0) {
+            return false;
+        } else {
+            return true;
         }
     }
 

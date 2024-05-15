@@ -12,39 +12,64 @@ import java.util.Queue;
  * @author Usuario
  */
 public class Juego {
-    
-      Queue<Integer> juego= new LinkedList<>();
-      Visitante id;
 
-    public Juego(Visitante id) {
-        this.id = id;
+    Queue<Visitante> juego = new LinkedList<>();
+    private int ticket;
+    private int cont = 0;
+    private int capJuego;
+
+    public Juego(int ticket, int capJuego) {
+        this.ticket = ticket;
+        this.capJuego = capJuego;
     }
 
-    public Queue<Integer> getJuego() {
+    public int getCont() {
+        return cont;
+    }
+
+    public void setCont(int cont) {
+        this.cont = cont;
+    }
+
+    public int getCapJuego() {
+        return capJuego;
+    }
+
+    public void setCapJuego(int capJuego) {
+        this.capJuego = capJuego;
+    }
+
+    public Queue<Visitante> getJuego() {
         return juego;
     }
 
-    public void setJuego(Queue<Integer> juego) {
+    public void setJuego(Queue<Visitante> juego) {
         this.juego = juego;
     }
 
-    public Visitante getId() {
-        return id;
+    public int getTicket() {
+        return ticket;
     }
 
-    public void setId(Visitante id) {
-        this.id = id;
+    public void setTicket(int ticket) {
+        this.ticket = ticket;
     }
-      
-      public void ingresoJuego(){
-          // ingresa a la fila por id;
-      }
-      public void salidaJuego(){
-          //salen los que ya pasaron al juego
-      }
-      
-      public void capacidadJuego(){
-          //ve si hay lugar en la fila para el juego
-      }
+
+    public boolean capJuego() {
+        //Comprobar cuanta gente hay dentro del parque
+        return cont != capJuego;
+    }
+
+    public void ingresoJuego(Visitante visitante) {
+        // ingresa a la fila por id;
+        if (capJuego()){
+           
+    }
+    }
+
+    public void salidaJuego() {
+        //salen los que ya pasaron al juego
+    }
+
 
 }
