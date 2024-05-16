@@ -76,7 +76,7 @@ public class Juego {
         //salen los que ya pasaron al juego
         
         juego.poll();
-        cont--;   
+        cont--;    
     }
 
 
