@@ -63,8 +63,9 @@ public class Juego {
     public void ingresoJuego(Visitante visitante) {
         // ingresa a la fila por id;
         if (capJuego()){
-            visitante.setIdentificador(ticket);
+            visitante.setTicket(ticket);
            juego.add(visitante);
+        cont++;
     }
         else{
             System.out.println("fila llena");
@@ -73,8 +74,9 @@ public class Juego {
 
     public void salidaJuego() {
         //salen los que ya pasaron al juego
-       
+        
         juego.poll();
+        cont--;
     }
 
 

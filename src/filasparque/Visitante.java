@@ -47,6 +47,14 @@ public class Visitante {
     public void setIdentificador(int identificador) {
         this.identificador = identificador;
     }
+
+    public int getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(int ticket) {
+        this.ticket = ticket;
+    }
     
   
     
